@@ -88,6 +88,13 @@ A aplicação aguarda o SQL Server estar ativo antes de executar as seeds de dad
 
 🧪 Testes e Demonstração
 
+![2025-07-08_21-18-48](https://github.com/user-attachments/assets/67ea6908-1376-4bd6-a3f3-3e0eddc4084f)
+
+
+![2025-07-06_22-19-07](https://github.com/user-attachments/assets/224bf872-1061-4d5a-ab13-e5ac267a2bb7)
+
+
+![2025-07-08_17-24-34](https://github.com/user-attachments/assets/43f1ee3e-7197-48b8-85aa-50d269fe15bb)
 
 👨‍💻 Autor
 
