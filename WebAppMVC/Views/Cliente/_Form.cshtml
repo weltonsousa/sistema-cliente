@@ -1,0 +1,120 @@
+﻿@model WebAppMVC.Models.ClienteViewModel
+@{
+    string formAction = ViewBag.FormAction ?? "Create";
+}
+
+<form asp-action="@formAction" asp-controller="Cliente" method="post"
+      onsubmit="return ajaxSubmit(this);" novalidate>
+
+    @if (Model.CodigoCliente > 0)
+    {
+        <input type="hidden" asp-for="CodigoCliente" />
+    }
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="RazaoSocial" class="form-label">Razão Social</label>
+            <input asp-for="RazaoSocial" class="form-control" />
+            <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="NomeFantasia" class="form-label">Nome Fantasia</label>
+            <input asp-for="NomeFantasia" class="form-control" />
+            <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Documento" class="form-label">Documento (CNPJ/CPF)</label>
+            <input asp-for="Documento" class="form-control" />
+            <span asp-validation-for="Documento" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="TipoPessoa" class="form-label">Tipo de Pessoa</label>
+            <select asp-for="TipoPessoa" class="form-select">
+                <option value="1">Pessoa Física</option>
+                <option value="2">Pessoa Jurídica</option>
+            </select>
+            <span asp-validation-for="TipoPessoa" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label asp-for="CEP" class="form-label">CEP</label>
+            <input asp-for="CEP" class="form-control" />
+            <span asp-validation-for="CEP" class="text-danger"></span>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label asp-for="Endereco" class="form-label">Endereço</label>
+            <input asp-for="Endereco" class="form-control" />
+            <span asp-validation-for="Endereco" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Complemento" class="form-label">Complemento</label>
+            <input asp-for="Complemento" class="form-control" />
+            <span asp-validation-for="Complemento" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Bairro" class="form-label">Bairro</label>
+            <input asp-for="Bairro" class="form-control" />
+            <span asp-validation-for="Bairro" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Cidade" class="form-label">Cidade</label>
+            <input asp-for="Cidade" class="form-control" />
+            <span asp-validation-for="Cidade" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="UF" class="form-label">UF</label>
+            <input asp-for="UF" class="form-control" />
+            <span asp-validation-for="UF" class="text-danger"></span>
+        </div>
+    </div>
+
+    <h5>Telefone</h5>
+    <div class="row">       
+        @for (int i = 0; i < Model.Telefones.Count; i++)
+        {
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Telefones[@i].NumeroTelefone" class="form-label">Número</label>
+                    <input asp-for="Telefones[@i].NumeroTelefone" class="form-control" />
+                    <span asp-validation-for="Telefones[@i].NumeroTelefone" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Telefones[@i].Operadora" class="form-label">Operadora</label>
+                    <input asp-for="Telefones[@i].Operadora" class="form-control" />
+                    <span asp-validation-for="Telefones[@i].Operadora" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Telefones[@i].CodigoTipoTelefone" class="form-label">Tipo</label>
+                    <select asp-for="Telefones[@i].CodigoTipoTelefone" class="form-select"
+                            asp-items="ViewBag.TiposTelefone as SelectList">
+                        <option value="">-- Selecione --</option>
+                    </select>
+                    <span asp-validation-for="Telefones[@i].CodigoTipoTelefone" class="text-danger"></span>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+</form>
